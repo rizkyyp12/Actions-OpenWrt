@@ -1,0 +1,5 @@
+# enable wifi by default
+uci set wireless.radio0.disabled='0'
+uci commit wireless
+
+exit 0
