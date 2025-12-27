@@ -1,0 +1,10 @@
+#!/bin/sh
+uci batch <<EOL
+set luci.cbi.dashboard.openclash_widget=widget
+set luci.cbi.dashboard.openclash_widget.title='OpenClash'
+set luci.cbi.dashboard.openclash_widget.url='/cgi-bin/luci/admin/services/openclash'
+set luci.cbi.dashboard.openclash_widget.target='_self'
+set luci.cbi.dashboard.openclash_widget.order='5'
+add luci.cbi.dashboard.openclash_widget shortcut
+commit luci
+EOL
