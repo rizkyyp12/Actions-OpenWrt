@@ -1,0 +1,33 @@
+#!/bin/sh
+uci batch <<EOL
+# OpenClash
+set luci.cbi.openclash.title='OpenClash'
+set luci.cbi.openclash.url='/cgi-bin/luci/admin/services/openclash'
+set luci.cbi.openclash.target='_self'
+set luci.cbi.openclash.order='10'
+add luci.cbi.openclash shortcut
+
+# ttyd (Terminal)
+set luci.cbi.ttyd.title='Terminal'
+set luci.cbi.ttyd.url='/cgi-bin/luci/admin/services/ttyd'
+set luci.cbi.ttyd.target='_self'
+set luci.cbi.ttyd.order='20'
+add luci.cbi.ttyd shortcut
+
+# Network Monitor
+set luci.cbi.netmon.title='Net Monitor'
+set luci.cbi.netmon.url='/cgi-bin/luci/admin/nlbwmon'
+set luci.cbi.netmon.target='_self'
+set luci.cbi.netmon.order='30'
+add luci.cbi.netmon shortcut
+
+# File Manager
+set luci.cbi.filebrowser.title='File Manager'
+set luci.cbi.filebrowser.url='/cgi-bin/luci/admin/filebrowser'
+set luci.cbi.filebrowser.target='_self'
+set luci.cbi.filebrowser.order='40'
+add luci.cbi.filebrowser shortcut
+commit luci
+EOL
+
+/etc/init.d/uhttpd restart
