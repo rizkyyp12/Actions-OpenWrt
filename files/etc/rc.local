@@ -1,5 +1,24 @@
-# enable wifi by default
-uci set wireless.radio0.disabled='0'
-uci commit wireless
+#!/bin/sh
+# 03-enable-wifi.sh - Konfigurasi Wi-Fi awal
 
-exit 0
+mkdir -p files/etc/config
+
+cat <<'EOF' > files/etc/config/wireless
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option channel '11'
+	option hwmode '11g'
+	option path 'platform/soc/fe300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1'
+	option htmode 'HT20'
+	option disabled '0'
+
+config wifi-iface
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'OpenWrt-RPi3'
+	option encryption 'psk2'
+	option key '12341234'
+EOF
+
+echo "Wi-Fi telah diaktifkan secara default."
